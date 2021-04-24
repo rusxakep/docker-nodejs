@@ -7,20 +7,23 @@
 name: 'Build Images'
 
 on:
+  schedule:
+    - cron: 1 0 * * 6
   push:
     paths:
-    - '**'
-    - '!README.md'
+      - '**'
+      - '!README.md'
 jobs:
-  master:
+  docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE="tiredofit/docker-$(echo ${GITHUB_REPOSITORY} | cut -d / -f 2})"
+          DOCKER_IMAGE=${GITHUB_REPOSITORY/docker-/}
           set -x
           if [[ $GITHUB_REF == refs/heads/* ]]; then
              if [[ $GITHUB_REF == refs/heads/*/* ]] ; then
@@ -49,6 +52,7 @@ jobs:
                 ;;
             esac
           fi
+
 
           if [[ $GITHUB_REF == refs/tags/* ]]; then
                GITTAG="${DOCKER_IMAGE}:$(echo $GITHUB_REF | sed 's|refs/tags/||g')"
@@ -83,20 +87,20 @@ jobs:
         id: Label
         run: |
           if [ -f "Dockerfile" ] ; then
-            sed -i "/FROM .*/a LABEL tiredofit.openldap.git_repository=\"https://github.com/${GITHUB_REPOSITORY}\"" Dockerfile
-            sed -i "/FROM .*/a LABEL tiredofit.openldap.git_commit=\"${GITHUB_SHA}\"" Dockerfile
-            sed -i "/FROM .*/a LABEL tiredofit.openldap.git_committed_by=\"${GITHUB_ACTOR}\"" Dockerfile
-            sed -i "/FROM .*/a LABEL tiredofit.openldap.image_build_date=\"$(date +'%Y-%m-%d %H:%M:%S')\"" Dockerfile
+            sed -i "/FROM .*/a LABEL nodejs.image.base_git_repository=\"https://github.com/${GITHUB_REPOSITORY}\"" Dockerfile
+            sed -i "/FROM .*/a LABEL nodejs.image.base_git_commit=\"${GITHUB_SHA}\"" Dockerfile
+            sed -i "/FROM .*/a LABEL nodejs.image.base_git_committed_by=\"${GITHUB_ACTOR}\"" Dockerfile
+            sed -i "/FROM .*/a LABEL nodejs.image.base_image_build_date=\"$(date +'%Y-%m-%d %H:%M:%S')\"" Dockerfile
             if [ -f "CHANGELOG.md" ] ; then
-              sed -i "/FROM .*/a LABEL tiredofit.openldap.git_changelog_version=\"$(head -n1 ./CHANGELOG.md | awk '{print $2}')\"" Dockerfile
+              sed -i "/FROM .*/a LABEL nodejs.base_git_changelog_version=\"$(head -n1 ./CHANGELOG.md | awk '{print $2}')\"" Dockerfile
             fi
 
             if [[ $GITHUB_REF == refs/tags/* ]]; then
-              sed -i "/FROM .*/a LABEL tiredofit.openldap.git_tag=\"${GITHUB_REF#refs/tags/v}\"" Dockerfile
+              sed -i "/FROM .*/a LABEL nodejs.base_git_tag=\"${GITHUB_REF#refs/tags/v}\"" Dockerfile
             fi
 
             if [[ $GITHUB_REF == refs/heads/* ]]; then
-              sed -i "/FROM .*/a LABEL tiredofit.openldap.git_branch=\"${GITHUB_REF#refs/heads/}\"" Dockerfile
+              sed -i "/FROM .*/a LABEL nodejs.base_git_branch=\"${GITHUB_REF#refs/heads/}\"" Dockerfile
             fi
           fi
 
