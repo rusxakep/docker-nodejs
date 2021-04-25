@@ -18,7 +18,7 @@ on:
 jobs:
   alpine_4:
     env:
-      RELEASE: "4/alpine"
+      RELEASE: "4-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -122,7 +122,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_4:
     env:
-      RELEASE: "4/debian"
+      RELEASE: "4-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -226,7 +226,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_6:
     env:
-      RELEASE: "6/alpine"
+      RELEASE: "6-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -330,7 +330,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_6:
     env:
-      RELEASE: "6/debian"
+      RELEASE: "6-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -434,7 +434,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_8:
     env:
-      RELEASE: "8/alpine"
+      RELEASE: "8-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -538,7 +538,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_8:
     env:
-      RELEASE: "8/debian"
+      RELEASE: "8-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -642,7 +642,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_10:
     env:
-      RELEASE: "10/alpine"
+      RELEASE: "10-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -746,7 +746,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_10:
     env:
-      RELEASE: "10/debian"
+      RELEASE: "10-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -850,7 +850,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_11:
     env:
-      RELEASE: "11/alpine"
+      RELEASE: "11-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -954,7 +954,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_11:
     env:
-      RELEASE: "11/debian"
+      RELEASE: "11-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -1058,7 +1058,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_12:
     env:
-      RELEASE: "12/alpine"
+      RELEASE: "12-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -1162,7 +1162,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_12:
     env:
-      RELEASE: "12/debian"
+      RELEASE: "12-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -1266,7 +1266,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_14:
     env:
-      RELEASE: "14/alpine"
+      RELEASE: "14-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -1370,7 +1370,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_14:
     env:
-      RELEASE: "14/debian"
+      RELEASE: "14-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -1474,7 +1474,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   alpine_16:
     env:
-      RELEASE: "16/alpine"
+      RELEASE: "16-alpine"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -1578,7 +1578,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
   debian_16:
     env:
-      RELEASE: "16/debian"
+      RELEASE: "16-debian"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
